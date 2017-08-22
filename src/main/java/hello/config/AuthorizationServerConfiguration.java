@@ -14,10 +14,11 @@ import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 
+import javax.sql.DataSource;
+
 @Configuration
 @EnableAuthorizationServer
-public class AuthorizationServerConfiguration extends
-    AuthorizationServerConfigurerAdapter {
+public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
 
   private TokenStore tokenStore = new InMemoryTokenStore();
 
@@ -27,6 +28,10 @@ public class AuthorizationServerConfiguration extends
 
   @Autowired
   private CustomUserDetailsService userDetailsService;
+
+  @Autowired
+  protected DataSource dataSource;
+
 
   @Override
   public void configure(AuthorizationServerEndpointsConfigurer endpoints)

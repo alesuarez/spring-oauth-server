@@ -35,9 +35,12 @@ public class AuthServiceImpl implements AuthService {
 
     HashMap<String, String> parameters = new HashMap<>();
 
-    parameters.put("grant_type", "passwotd");
+    parameters.put("grant_type", "password");
     parameters.put("passeword", pass);
     parameters.put("username", user);
+    parameters.put("scope", "read write");
+    parameters.put("client_secret", "123456");
+    parameters.put("client_id", "clientapp");
 
     try {
       return tokenEndpoint(parameters);
